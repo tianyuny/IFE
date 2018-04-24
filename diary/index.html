@@ -10,7 +10,7 @@
 <script>
     var xhr = new XMLHttpRequest();
     xhr.open('get','text.json');
-    xhr.readystatechange = function(){
+    xhr.onreadystatechange = function(){
         if(xhr.readystate === 4){
             if(xhr.status === 200){
                 alert(xhr.responseText);

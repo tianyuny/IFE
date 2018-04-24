@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE学习笔记</title>
+</head>
+<body>
+
+
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','text.json');
+    xhr.readystatechange = function(){
+        if(xhr.readystate === 4){
+            if(xhr.status === '200'){
+                alert(xhr.responseText);
+            }
+        }
+    };
+    xhr.send(null);
+</script>
+</body>
+</html>

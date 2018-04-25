@@ -50,6 +50,7 @@ body { font-size: 14px;}
 }
 .header-name {
     font-size: 32px;
+    color: rgb(255,255,255);
 }
 .header-description {
     display: inline-block;
@@ -59,8 +60,8 @@ body { font-size: 14px;}
 }
 
 
-
-.introduction-title {
+/* main区域小标题组件 */
+.ui-title {
     margin-bottom: 20px;
     padding-top: 50px;
     line-height: 2em;
@@ -73,5 +74,5 @@ body { font-size: 14px;}
     justify-content: flex-start;
 }
 .introduction-content-1 {
-    margin-right: 50px;
+    margin-right: 100px;
 }

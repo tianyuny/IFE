@@ -1,0 +1,67 @@
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+h4,
+p,
+ul,
+dl,
+li,
+dt,
+dd{
+    margin: 0;
+    font-size: inherit;
+}
+.resume {
+    margin: 0 auto;
+    width: 850px;
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0 1px #aaa;
+       -moz-box-shadow: 0 0 1px #aaa;
+            box-shadow: 0 0 1px #aaa;
+}
+.resume-header {
+    float: left;
+    margin: 0 20px -999px 0;
+    padding: 50px 0 999px;
+    width: 200px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    color: #fff;
+    background-color: #64a4fa;
+}
+
+.resume-content {
+    overflow: hidden;
+}
+
+.resume-item-head,
+.resume-item-class {
+    margin: 30px 0;
+}
+.resume-item-head {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.resume-item-class {
+    overflow: hidden;
+    zoom: 1;
+}
+.resume-item-class dl,
+.resume-item-class dt,
+.resume-item-class dd {
+    float: left;
+}
+
+.resume-item-class dt {
+    font-weight: bold;
+}
+.resume-item-class dd {
+    margin: 0 35px 0 10px;
+}

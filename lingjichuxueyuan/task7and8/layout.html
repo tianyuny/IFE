@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多栏布局</title>
+    <style>
+        body {
+            margin: 20px auto;
+            padding: 0;
+            max-width: 1200px;
+            background: #eee;
+        }
+        h3 {
+            margin-top: 50px;
+            text-indent: 20px;
+            color: #a60000;
+        }
+        h4 {
+            margin-top: 40px;
+            margin-bottom: 15px;
+            text-indent: 20px;
+            color: #6b3;
+        }
+        pre {
+            padding: 20px 0;
+            color: #ccc;
+            background: #000;
+        }
+
+        .center,
+        .left,
+        .right {
+            min-height: 100px;
+        }
+        .center {
+            background: #fff;
+        }
+        .left {
+            background: #6b3;
+        }
+        .right {
+            background: #a60000;
+        }
+
+        /* 两栏布局30%+70% */
+        /* float */
+        .column-2-1-float {
+            overflow: hidden;
+        }
+        .column-2-1-float .left {
+            float: left;
+            width: 30%;
+        }
+        .column-2-1-float .right {
+            float: left;
+            width: 70%;
+        }
+        /* inline-block */
+        .column-2-1-inlineblock {
+            font-size: 0;
+        }
+        .column-2-1-inlineblock .left,
+        .column-2-1-inlineblock .right {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 16px;
+        }
+        .column-2-1-inlineblock .left {
+            width: 30%;
+        }
+        .column-2-1-inlineblock .right {
+            width: 70%;
+        }
+        /* table */
+        .column-2-1-table {
+            display: table;
+            width: 100%;
+        }
+        .column-2-1-table .left {
+            display: table-cell;
+            width: 30%;
+        }
+        .column-2-1-table .right {
+            display: table-cell;
+            width: 70%;
+        }
+        /* flex */
+        .column-2-1-flex {
+            display: flex;
+        }
+        .column-2-1-flex .left {
+            flex: 3;
+        }
+        .column-2-1-flex .right {
+            flex: 7;
+        }
+
+        /* 两栏布局，左侧固定右侧自适应 */
+        /* float + margin-left */
+        .column-2-2-float-margin {
+            overflow: hidden;
+        }
+        .column-2-2-float-margin .left {
+            float: left;
+            width: 200px;
+        }
+        .column-2-2-float-margin .right {
+            margin-left: 220px;
+        }
+        /* float + overflow */
+        .column-2-2-float-overflow {
+            overflow: hidden;
+        }
+        .column-2-2-float-overflow .left {
+            float: left;
+            width: 200px;
+            margin-right: 20px;
+        }
+        .column-2-2-float-overflow .right {
+            overflow: hidden;
+        }
+        /* table */
+        .column-2-2-table {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .column-2-2-table .left {
+            display: table-cell;
+            width: 200px;
+            border-right: 20px solid rgba(0,0,0,0);
+            background-clip: padding-box;
+        }
+        .column-2-2-table .right {
+            display: table-cell;
+        }
+        /* flex */
+        .column-2-2-flex {
+            display: flex;
+        }
+        .column-2-2-flex .left {
+            width: 200px;
+            margin-right: 20px;
+        }
+        .column-2-2-flex .right {
+            flex: 1;
+        }
+
+        /* 两栏布局，左侧固定右侧自适应 */
+        /* float + margin-right */
+        .column-2-3-float-margin {
+            overflow: hidden;
+        }
+        .column-2-3-float-margin .left {
+            float: right;
+            width: 200px;
+        }
+        .column-2-3-float-margin .right {
+            margin-right: 220px;
+        }
+        /* float + overflow */
+        .column-2-3-float-overflow {
+            overflow: hidden;
+        }
+        .column-2-3-float-overflow .left {
+            float: right;
+            width: 200px;
+            margin-left: 20px;
+        }
+        .column-2-3-float-overflow .right {
+            overflow: hidden;
+        }
+        /* table */
+        .column-2-3-table {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .column-2-3-table .left {
+            display: table-cell;
+        }
+        .column-2-3-table .right {
+            display: table-cell;
+            width: 200px;
+            border-left: 20px solid rgba(0,0,0,0);
+            background-clip: padding-box;
+        }
+        /* flex */
+        .column-2-3-flex {
+            display: flex;
+        }
+        .column-2-3-flex .left {
+            flex: 1;
+        }
+        .column-2-3-flex .right {
+            width: 200px;
+            margin-left: 20px;
+        }
+        /* 三栏布局，左侧固定宽度，中间自适应 */
+        /* 双飞翼 */
+        .column-3-1-sfy {
+            overflow: hidden;
+        }
+        .column-3-1-sfy .center,
+        .column-3-1-sfy .left,
+        .column-3-1-sfy .right {
+            float: left;
+        }
+        .column-3-1-sfy .center {
+            width: 100%;
+        }
+        .column-3-1-sfy .content {
+            margin: 0 200px 0 200px;
+        }
+        .column-3-1-sfy .left {
+            margin-left: -100%;
+            width: 200px;
+        }
+        .column-3-1-sfy .right {
+            margin-left: -200px;
+            width: 200px;
+        }
+        /* 圣杯 */
+        .column-3-1-sb {
+            padding: 0 200px;
+            overflow: hidden;
+        }
+        .column-3-1-sb .center,
+        .column-3-1-sb .left,
+        .column-3-1-sb .right {
+            position: relative;
+            float: left;
+        }
+        .column-3-1-sb .center {
+            width: 100%;
+        }
+        .column-3-1-sb .left {
+            right: 200px;
+            margin-left: -100%;
+            width: 200px;
+        }
+        .column-3-1-sb .right  {
+            left: 200px;
+            margin-left: -200px;
+            width: 200px;
+        }
+
+        /* flex */
+        .column-3-1-flex {
+            display: flex;
+        }
+        .column-3-1-flex .left {
+            width: 200px;
+            order: -1;
+        }
+        .column-3-1-flex .center {
+            flex: 1;
+        }
+        .column-3-1-flex  .right {
+            width: 200px;
+        }
+
+        /* float */
+        .column-3-1-float {
+            overflow: hidden;
+        }
+        .column-3-1-float .center {
+            margin: 0 200px;
+        }
+        .column-3-1-float .left {
+            float: left;
+            width: 200px;
+        }
+        .column-3-1-float .right {
+            float: right;
+            width: 200px;
+        }
+        /* table */
+        .column-3-1-table {
+            display: table;
+            width: 100%;
+        }
+        .column-3-1-table .left,
+        .column-3-1-table .right,
+        .column-3-1-table .center {
+            display: table-cell;
+        }
+        .column-3-1-table .left,
+        .column-3-1-table .right {
+            width: 200px;
+        }
+
+        /* 三栏布局，左侧固定宽度，中间固定宽度，右侧自适应 */
+        /* float + margin-left */
+        .column-3-2-float-margin {
+            overflow: hidden;
+        }
+        .column-3-2-float-margin .left,
+        .column-3-2-float-margin .center {
+            float: left;
+            width: 200px;
+        }
+        .column-3-2-float-margin .right {
+            margin-left: 400px;
+        }
+
+        /* float + margin-left */
+        /* float + table-cell */
+        .column-3-2-float-overflow {
+            overflow: hidden;
+        }
+        .column-3-2-float-overflow .left,
+        .column-3-2-float-overflow .center {
+            float: left;
+            width: 200px;
+        }
+        .column-3-2-float-overflow .right {
+            overflow: hidden;
+        }
+
+        /* float + table-cell */
+        .column-3-2-float-table {
+            overflow: hidden;
+        }
+        .column-3-2-float-table .left,
+        .column-3-2-float-table .center {
+            float: left;
+            width: 200px;
+        }
+        .column-3-2-float-table .right {
+            display: table-cell;
+            width: 9999px;
+        }
+
+        /* table */
+        .column-3-2-table {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .column-3-2-table .left,
+        .column-3-2-table .center,
+        .column-3-2-table .right {
+            display: table-cell;
+        }
+        .column-3-2-table .left,
+        .column-3-2-table .center {
+            width: 200px;
+        }
+
+        /* flex */
+        .column-3-2-flex {
+            display: flex;
+        }
+        .column-3-2-flex .left,
+        .column-3-2-flex .center {
+            width: 200px;
+        }
+        .column-3-2-flex .right {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>多栏布局实现方法</h1>
+    <h3>两栏布局30%+70%</h3>
+    <h4>float</h4>
+    <pre>
+        .column-2-1-float {
+            overflow: hidden;
+        }
+        .column-2-1-float .left {
+            float: left;
+            width: 30%;
+        }
+        .column-2-1-float .right {
+            float: left;
+            width: 70%;
+        }
+
+        &lt;div class="column-2-1-float">
+            &lt;div class="left">我是用float实现的&lt;/div>
+            &lt;div class="right">我是用float实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-1-float">
+        <div class="left">我是用float实现的</div>
+        <div class="right">我是用float实现的</div>
+    </div>
+
+    <h4>inline-block</h4>
+    <pre>
+        .column-2-1-inlineblock {
+            font-size: 0;
+        }
+        .column-2-1-inlineblock .left,
+        .column-2-1-inlineblock .right {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 16px;
+        }
+        .column-2-1-inlineblock .left {
+            width: 30%;
+        }
+        .column-2-1-inlineblock .right {
+            width: 70%;
+        }
+        &lt;div class="column-2-1-inlineblock">
+            &lt;div class="left">我是用inline-block实现的&lt;/div>
+            &lt;div class="right">我是用inline-block实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-1-inlineblock">
+        <div class="left">我是用inline-block实现的</div>
+        <div class="right">我是用inline-block实现的</div>
+    </div>
+
+    <h4>table</h4>
+    <pre>
+        .column-2-1-table {
+            display: table;
+            width: 100%;
+        }
+        .column-2-1-table .left {
+            display: table-cell;
+            width: 30%;
+        }
+        .column-2-1-table .right {
+            display: table-cell;
+            width: 70%;
+        }
+        &lt;div class="column-2-1-table">
+            &lt;div class="left">我是用table实现的&lt;/div>
+            &lt;div class="right">我是用table实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-1-table">
+        <div class="left">我是用table实现的</div>
+        <div class="right">我是用table实现的</div>
+    </div>
+
+    <h4>flex</h4>
+    <pre>
+        .column-2-1-flex {
+            display: flex;
+        }
+        .column-2-1-flex .left {
+            flex: 3;
+        }
+        .column-2-1-flex .right {
+            flex: 7;
+        }
+        &lt;div class="column-2-1-flex">
+            &lt;div class="left">我是用flex实现的&lt;/div>
+            &lt;div class="right">我是用flex实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-1-flex">
+        <div class="left">我是用flex实现的</div>
+        <div class="right">我是用flex实现的</div>
+    </div>
+
+    <h3>两栏布局，左侧固定右侧自适应</h3>
+
+    <h4>float + margin-left</h4>
+    <pre>
+        .column-2-2-float-margin {
+            overflow: hidden;
+        }
+        .column-2-2-float-margin .left {
+            float: left;
+            width: 200px;
+        }
+        .column-2-2-float-margin .right {
+            margin-left: 220px;
+        }
+        &lt;div class="column-2-2-float-margin">
+            &lt;div class="left">我是用float+margin-left实现的&lt;/div>
+            &lt;div class="right">我是用float+margin-left实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-2-float-margin">
+        <div class="left">我是用float+margin-left实现的</div>
+        <div class="right">我是用float+margin-left实现的</div>
+    </div>
+
+    <h4>float + overflow</h4>
+    <pre>
+        .column-2-2-float-overflow {
+            overflow: hidden;
+        }
+        .column-2-2-float-overflow .left {
+            float: left;
+            width: 200px;
+            margin-right: 20px;
+        }
+        .column-2-2-float-overflow .right {
+            overflow: hidden;
+        }
+        &lt;div class="column-2-2-float-overflow">
+            &lt;div class="left">我是用float+overflow实现的&lt;/div>
+            &lt;div class="right">我是用float+overflow实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-2-float-overflow">
+        <div class="left">我是用float+overflow实现的</div>
+        <div class="right">我是用float+overflow实现的</div>
+    </div>
+
+    <h4>table</h4>
+    <pre>
+        .column-2-2-table {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .column-2-2-table .left {
+            display: table-cell;
+            width: 200px;
+            border-right: 20px solid rgba(0,0,0,0);
+            background-clip: padding-box;
+        }
+        .column-2-2-table .right {
+            display: table-cell;
+        }
+        &lt;div class="column-2-2-table">
+            &lt;div class="left">我是用table实现的&lt;/div>
+            &lt;div class="right">我是用table实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-2-table">
+        <div class="left">我是用table实现的</div>
+        <div class="right">我是用table实现的</div>
+    </div>
+
+    <h4>flex</h4>
+    <pre>
+        .column-2-2-flex {
+            display: flex;
+        }
+        .column-2-2-flex .left {
+            width: 200px;
+            margin-right: 20px;
+        }
+        .column-2-2-flex .right {
+            flex: 1;
+        }
+        &lt;div class="column-2-2-flex">
+            &lt;div class="left">我是用flex实现的&lt;/div>
+            &lt;div class="right">我是用flex实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-2-flex">
+        <div class="left">我是用flex实现的</div>
+        <div class="right">我是用flex实现的</div>
+    </div>
+
+    <h3>两栏布局，右侧固定左侧自适应</h3>
+
+    <h4>float + margin-right</h4>
+    <pre>
+        .column-2-3-float-margin {
+            overflow: hidden;
+        }
+        .column-2-3-float-margin .left {
+            float: right;
+            width: 200px;
+        }
+        .column-2-3-float-margin .right {
+            margin-right: 220px;
+        }
+        &lt;div class="column-2-3-float-margin">
+            &lt;div class="left">我是用float+margin-left实现的&lt;/div>
+            &lt;div class="right">我是用float+margin-left实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-3-float-margin">
+        <div class="left">我是用float+margin-left实现的</div>
+        <div class="right">我是用float+margin-left实现的</div>
+    </div>
+
+    <h4>float + overflow</h4>
+    <pre>
+        .column-2-3-float-overflow {
+            overflow: hidden;
+        }
+        .column-2-3-float-overflow .left {
+            float: right;
+            width: 200px;
+            margin-left: 20px;
+        }
+        .column-2-3-float-overflow .right {
+            overflow: hidden;
+        }
+        &lt;div class="column-2-3-float-overflow">
+            &lt;div class="left">我是用float+overflow实现的&lt;/div>
+            &lt;div class="right">我是用float+overflow实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-3-float-overflow">
+        <div class="left">我是用float+overflow实现的</div>
+        <div class="right">我是用float+overflow实现的</div>
+    </div>
+
+    <h4>table</h4>
+    <pre>
+        .column-2-3-table {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .column-2-3-table .left {
+            display: table-cell;
+        }
+        .column-2-3-table .right {
+            display: table-cell;
+            width: 200px;
+            border-left: 20px solid rgba(0,0,0,0);
+            background-clip: padding-box;
+        }
+        &lt;div class="column-2-3-table">
+            &lt;div class="left">我是用table实现的&lt;/div>
+            &lt;div class="right">我是用table实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-3-table">
+        <div class="left">我是用table实现的</div>
+        <div class="right">我是用table实现的</div>
+    </div>
+
+    <h4>flex</h4>
+    <pre>
+        .column-2-3-flex {
+            display: flex;
+        }
+        .column-2-3-flex .left {
+            flex: 1;
+        }
+        .column-2-3-flex .right {
+            width: 200px;
+            margin-left: 20px;
+        }
+        &lt;div class="column-2-3-flex">
+            &lt;div class="left">我是用flex实现的&lt;/div>
+            &lt;div class="right">我是用flex实现的&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-2-3-flex">
+        <div class="left">我是用flex实现的</div>
+        <div class="right">我是用flex实现的</div>
+    </div>
+
+    <h3>三栏布局，左侧固定宽度，中间自适应</h3>
+    <h4>双飞翼布局</h4>
+    <pre>
+        .column-3-1-sfy {
+            overflow: hidden;
+        }
+        .column-3-1-sfy .center,
+        .column-3-1-sfy .left,
+        .column-3-1-sfy .right {
+            float: left;
+        }
+        .column-3-1-sfy .center {
+            width: 100%;
+        }
+        .column-3-1-sfy .content {
+            margin: 0 200px 0 200px;
+        }
+        .column-3-1-sfy .left {
+            margin-left: -100%;
+            width: 200px;
+        }
+        .column-3-1-sfy .right {
+            margin-left: -200px;
+            width: 200px;
+        }
+        &lt;div class="column-3-1-sfy">
+            &lt;div class="center">
+                &lt;div class="content">我先渲染&lt;/div>
+            &lt;/div>
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-1-sfy">
+        <div class="center">
+            <div class="content">我先渲染</div>
+        </div>
+        <div class="left">我是左侧</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h4>圣杯布局 （宽度过窄有bug）</h4>
+    <pre>
+        .column-3-1-sb {
+            padding: 0 200px;
+            overflow: hidden;
+        }
+        .column-3-1-sb .center,
+        .column-3-1-sb .left,
+        .column-3-1-sb .right {
+            position: relative;
+            float: left;
+        }
+        .column-3-1-sb .center {
+            width: 100%;
+        }
+        .column-3-1-sb .left {
+            right: 200px;
+            margin-left: -100%;
+            width: 200px;
+        }
+        .column-3-1-sb .right  {
+            left: 200px;
+            margin-left: -200px;
+            width: 200px;
+        }
+        &lt;div class="column-3-1-sb">
+            &lt;div class="center">我先渲染&lt;/div>
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-1-sb">
+        <div class="center">我先渲染</div>
+        <div class="left">我是左侧</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h4>flex</h4>
+    <pre>
+        .column-3-1-flex {
+            display: flex;
+        }
+        .column-3-1-flex .left {
+            width: 200px;
+            order: -1;
+        }
+        .column-3-1-flex .center {
+            flex: 1;
+        }
+        .column-3-1-flex  .right {
+            width: 200px;
+        }
+        &lt;div class="column-3-1-flex">
+            &lt;div class="center">我先渲染&lt;/div>
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-1-flex">
+        <div class="center">我先渲染</div>
+        <div class="left">我是左侧</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h4>float</h4>
+    <pre>
+        .column-3-1-float {
+            overflow: hidden;
+        }
+        .column-3-1-float .center {
+            margin: 0 200px;
+        }
+        .column-3-1-float .left {
+            float: left;
+            width: 200px;
+        }
+        .column-3-1-float .right {
+            float: right;
+            width: 200px;
+        }
+        &lt;div class="column-3-1-float">
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+            &lt;div class="center">我最后渲染&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-1-float">
+        <div class="left">我是左侧</div>
+        <div class="right">我是右侧</div>
+        <div class="center">我最后渲染</div>
+    </div>
+
+    <h4>table</h4>
+    <pre>
+        .column-3-1-table {
+            display: table;
+            width: 100%;
+        }
+        .column-3-1-table .left,
+        .column-3-1-table .right,
+        .column-3-1-table .center {
+            display: table-cell;
+        }
+        .column-3-1-table .left,
+        .column-3-1-table .right {
+            width: 200px;
+        }
+        &lt;div class="column-3-1-table">
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="center">我没有优先渲染权&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-1-table">
+        <div class="left">我是左侧</div>
+        <div class="center">我没有优先渲染权</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h3>三栏布局，左侧固定宽度，中间固定宽度，右侧自适应</h3>
+    <h4>float + margin-left</h4>
+    <pre>
+        .column-3-2-float-margin {
+            overflow: hidden;
+        }
+        .column-3-2-float-margin .left,
+        .column-3-2-float-margin .center {
+            float: left;
+            width: 200px;
+        }
+        .column-3-2-float-margin .right {
+            margin-left: 400px;
+        }
+        &lt;div class="column-3-2-float-margin">
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="center">我在中间&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-2-float-margin">
+        <div class="left">我是左侧</div>
+        <div class="center">我在中间</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h4>float + overflow</h4>
+    <pre>
+        .column-3-2-float-overflow {
+            overflow: hidden;
+        }
+        .column-3-2-float-overflow .left,
+        .column-3-2-float-overflow .center {
+            float: left;
+            width: 200px;
+        }
+        .column-3-2-float-overflow .right {
+            overflow: hidden;
+        }
+        &lt;div class="column-3-2-float-overflow">
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="center">我在中间&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-2-float-overflow">
+        <div class="left">我是左侧</div>
+        <div class="center">我在中间</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h4>float + table-cell</h4>
+    <pre>
+        .column-3-2-float-table {
+            overflow: hidden;
+        }
+        .column-3-2-float-table .left,
+        .column-3-2-float-table .center {
+            float: left;
+            width: 200px;
+        }
+        .column-3-2-float-table .right {
+            display: table-cell;
+            width: 9999px;
+        }
+    </pre>
+    <div class="column-3-2-float-table">
+        <div class="left">我是左侧</div>
+        <div class="center">我在中间</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h4>table</h4>
+    <pre>
+        .column-3-2-table {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .column-3-2-table .left,
+        .column-3-2-table .center,
+        .column-3-2-table .right {
+            display: table-cell;
+        }
+        .column-3-2-table .left,
+        .column-3-2-table .center {
+            width: 200px;
+        }
+    </pre>
+    <div class="column-3-2-table">
+        <div class="left">我是左侧</div>
+        <div class="center">我在中间</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+    <h4>flex</h4>
+    <pre>
+        .column-3-2-flex {
+            display: flex;
+        }
+        .column-3-2-flex .left,
+        .column-3-2-flex .center {
+            width: 200px;
+        }
+        .column-3-2-flex .right {
+            flex: 1;
+        }
+        &lt;div class="column-3-2-flex">
+            &lt;div class="left">我是左侧&lt;/div>
+            &lt;div class="center">我在中间&lt;/div>
+            &lt;div class="right">我是右侧&lt;/div>
+        &lt;/div>
+    </pre>
+    <div class="column-3-2-flex">
+        <div class="left">我是左侧</div>
+        <div class="center">我在中间</div>
+        <div class="right">我是右侧</div>
+    </div>
+
+</body>
+</html>

@@ -8,10 +8,13 @@ a {
 ul {
     list-style: none;
 }
+
+/* 固定宽度居中容器 */
 .wrap {
     margin: 0 auto;
     width: 960px;
 }
+/* 头部 */
 header {
     padding: 10px;
     width: 100%;
@@ -27,6 +30,7 @@ header .wrap {
 header .logo {
     align-self: center;
 }
+/* banner */
 .banner {
     position: relative;
     width: 100%;
@@ -55,6 +59,7 @@ header .logo {
     opacity: 1;
     cursor: pointer;
 }
+/* 内容 */
 .container {
     position: relative;
     margin-top: 100px;
@@ -100,6 +105,7 @@ header .logo {
     padding: 80px;
     border: 1px solid #ddd;
 }
+/* 底部 */
 footer {
     padding: 10px 0;
     height: 100px;

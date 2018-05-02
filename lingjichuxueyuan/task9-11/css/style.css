@@ -49,7 +49,7 @@ header {
             align-items: center;
     text-align: center;
     color: #fff;
-    background: url('../img/background-1.jpg') no-repeat;
+    background: #777 url('../img/background-1.jpg') no-repeat;
     background-size: cover;
 }
 
@@ -157,7 +157,7 @@ header {
 /* calltoaction */
 .calltoaction {
     padding: 180px 5px;
-    background: url('../img/background-2.jpg') center no-repeat;
+    background: #777 url('../img/background-2.jpg') center no-repeat;
     background-size: cover;
 }
 .calltoaction-text {
@@ -283,8 +283,8 @@ header {
     margin: 55px -15px 0;
 }
 .team-content > li {
-    -webkit-flex: 1 1 400px;
-            flex: 1 1 400px;
+    -webkit-flex: 1 1 330px;
+            flex: 1 1 330px;
     margin: 30px 15px 0;
     max-width: 80%;
     background: no-repeat center top;

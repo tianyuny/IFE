@@ -73,6 +73,7 @@ footer {
             justify-content: center;
 }
 header,
+.example-item,
 .contact-wrap {
     -webkit-align-items: center;
     align-items: center;

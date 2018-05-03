@@ -400,11 +400,12 @@ footer { /* 用了flex见头部 */
     color: #fff;
 }
 .footer-item > ul {
+    margin-top: 14px;
     line-height: 3;
     color: rgba(255, 255, 255, .3);
 }
 .footer-item > p {
-    margin-top: 14px;
+    margin-top: 26px;
     color: rgba(255, 255, 255, .3);
 }
 /* 图标处理 */

@@ -445,6 +445,9 @@ footer {
     margin-top: 14px;
     color: rgba(255, 255, 255, .3);
 }
+.footer-item-icon {
+    margin-top: 30px;
+}
 .footer-item-icon > li {
     display: inline-block;
     margin-right: 25px;

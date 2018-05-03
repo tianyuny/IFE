@@ -10,9 +10,24 @@ body {
     line-height: 1.6;
     font-size: 16px;
     font-family: Montserrat ExtraLight;
+    color: #141414;
 }
 h1,h2,h3,h4 {
     font-weight: normal;
+}
+h1 {
+    font-size: 62px;
+}
+h2 {
+    line-height: 1.2;
+    font-size: 42px;
+}
+h2 + p,
+h4 + p {
+    color: rgba(20, 20, 20, .7);
+}
+p {
+    margin-top: 30px;
 }
 ul {
     list-style: none;
@@ -33,6 +48,8 @@ input {
 a {
     text-decoration: none;
 }
+
+/* 最大宽度包裹容器 */
 .wrap {
     margin: 0 auto;
     padding: 0 10px;
@@ -40,14 +57,31 @@ a {
     overflow: hidden;
 }
 
-/* 头部 */
-header {
+/* flex布局集中设置 */
+header,
+.feature-content,
+.example-item,
+.team-content,
+.team-item,
+.contact-wrap,
+footer {
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-flow: column wrap;
-            flex-flow: column wrap;
+    -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-justify-content: center;
+            justify-content: center;
+}
+header,
+.contact-wrap {
     -webkit-align-items: center;
-            align-items: center;
+    align-items: center;
+}
+
+/* 头部 */
+header { /* 用了flex见头部 */
+    -webkit-flex-direction: column;
+            flex-direction: column;
     text-align: center;
     padding: 0 10px;
     color: #fff;
@@ -60,10 +94,7 @@ header {
     margin-top: 190px;
     max-width: 770px
 }
-.header-text h1 {
-    font-size: 62px;
-}
-.header-text p {
+.header-text > p {
     margin-top: 50px;
     font-size: 20px;
     color: rgba(255, 255, 255, .7);
@@ -77,12 +108,12 @@ header {
     max-width: 970px;
     border: 1px solid rgba(255, 255, 255, .2);
 }
-.header-signup p {
+.header-signup > p {
     margin-top: 10px;
     font-size: 12px;
     color: rgba(255,255,255,.3);
 }
-.header-signup input {
+.header-signup > input {
     margin: 40px 15px 0;
     padding: 0 20px;
     width: 80%;
@@ -91,7 +122,7 @@ header {
     color: #fff;
     border: 1px solid rgba(255,255,255,.2);
 }
-.header-signup button {
+.header-signup > button {
     margin: 40px 15px 0;
     width: 125px;
     line-height: 50px;
@@ -105,58 +136,45 @@ header {
 /* feature */
 .feature {
     padding: 85px 0 100px;
-    color: #141414;
-    background: #fff;
 }
-.feature .wrap {
+.feature > .wrap {
     max-width: 1040px;
 }
 .feature-title {
     margin: 0 auto;
-    max-width: 670px;
+    max-width: 685px;
     text-align: center;
 }
-.feature-title h3 {
+.feature-title > h3 {
     font-size: 14px;
 }
-.feature-title h2 {
+.feature-title > h2 {
     margin-top: 20px;
-    line-height: 1.2;
-    font-size: 41px;
 }
-.feature-content {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-justify-content: center;
-            justify-content: center;
-    margin: 60px -80px 0;
+.feature-content { /* 用了flex见头部 */
+    margin: 0 -80px;
 }
-.feature-content li {
+.feature-content > li {
     flex: 1 1 255px;
-    margin: 20px 80px 0;
+    margin: 80px 80px 0;
     padding-left: 75px;
     max-width: 500px;
 }
 /* 背景图标 */
-.feature-content li:nth-child(1) {
+.feature-content > li:nth-child(1) {
     background: url('../img/feature-1.png') no-repeat 19px 5px;
 }
-.feature-content li:nth-child(2) {
+.feature-content > li:nth-child(2) {
     background: url('../img/feature-2.png') no-repeat 12px 5px;
 }
-.feature-content li:nth-child(3) {
+.feature-content > li:nth-child(3) {
     background: url('../img/feature-3.png') no-repeat left 5px;
 }
-.feature-content li:nth-child(4) {
+.feature-content > li:nth-child(4) {
     background: url('../img/feature-4.png') no-repeat left 5px;
 }
 .feature-content h4 {
     font-size: 20px;
-}
-.feature-content p {
-    color: rgba(20,20,20,.7);
 }
 
 /* calltoaction */
@@ -166,14 +184,12 @@ header {
     background-size: cover;
 }
 .calltoaction-text {
-    max-width: 380px;
+    max-width: 385px;
 }
-.calltoaction-text h2 {
-    line-height: 1.2;
-    font-size: 41px;
+.calltoaction-text > h2 {
     color: #fff;
 }
-.calltoaction-text p {
+.calltoaction-text > p {
     margin-top: 45px;
     font-size: 18px;
     color: rgba(255,255,255,.7);
@@ -184,19 +200,17 @@ header {
 .calltoaction-go {
     margin-top: 35px;
 }
-.calltoaction-go a {
+.calltoaction-go > a {
     display: inline-block;
     margin: 20px 20px 0 0;
     width: 240px;
-    box-sizing: border-box;
     line-height: 60px;
     text-align: center;
 }
-.calltoaction-go a:nth-child(1) {
-    color: #141414;
+.calltoaction-go > a:nth-child(1) {
     background: #fff;
 }
-.calltoaction-go a:nth-child(2) {
+.calltoaction-go > a:nth-child(2) {
     color: #fff;
     border: 1px solid rgba(255,255,255,.3);
 }
@@ -206,22 +220,13 @@ header {
     padding: 90px 0 75px;
     text-align: center;
 }
-.tryour-title {
-    font-size: 42px;
-    color: #141414;
-}
 .tryour-content {
     margin: 75px -40px 0;
 }
-.tryour-content li {
+.tryour-content > li {
     display: inline-block;
     margin: 30px 38px;
     width: 270px;
-}
-.tryour-content p {
-    margin-top: 30px;
-    font-size: 16px;
-    color: rgba(20,20,20,.7);
 }
 
 /* example */
@@ -229,15 +234,7 @@ header {
     padding: 30px 0 100px;
     border-top: 1px solid #e7e7e7;
 }
-.example-item {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-align-items: center;
-            align-items: center;
+.example-item { /* 用了flex见头部 */
     margin: 80px -30px 0;
 }
 .example-item-text {
@@ -247,11 +244,6 @@ header {
 }
 .example-item-text > h4 {
     font-size: 20px;
-    color: #141414;
-}
-.example-item-text > p {
-    margin-top: 30px;
-    color: rgba(20, 20, 20, .7);
 }
 .example-item > img {
     margin: 0 30px;
@@ -261,13 +253,11 @@ header {
     background-size: 100%;
 }
 .example-item:nth-child(1) > img {
+    order: -1;
     background-image: url('../img/example-1.png');
 }
 .example-item:nth-child(2) > img {
     background-image: url('../img/example-2.png');
-}
-.example-item:first-child img {
-    order: -1;
 }
 
 /* team */
@@ -280,22 +270,10 @@ header {
     margin: 0 auto;
     max-width: 700px;
 }
-.team-title h2 {
-    font-size: 42px;
-    color: #141414;
-}
-.team-title p {
-    margin-top: 30px;
+.team-title > p {
     font-size: 18px;
-    color: rgba(20, 20, 20, .7);
 }
-.team-content {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-justify-content: center;
-            justify-content: center;
+.team-content { /* 用了flex见头部 */
     margin: 55px -15px 0;
 }
 .team-content > li {
@@ -322,13 +300,9 @@ header {
     opacity: 1;
     cursor: pointer;
 }
-.team-item {
-    display: -webkit-flex;
-    display: flex;
+.team-item { /* 用了flex见头部 */
     -webkit-flex-direction: column;
             flex-direction: column;
-    -webkit-justify-content: center;
-            justify-content: center;
     height: 30vw;
     max-height: 340px;
     min-height: 270px;
@@ -336,11 +310,11 @@ header {
     background: rgba(20, 20, 20, .65);
     opacity: 0;
 }
-.team-item h4 {
+.team-item > h4 {
     font-size: 20px;
     color: #fff;
 }
-.team-item p {
+.team-item > p {
     margin: 15px 0 35px;
     font-size: 12px;
     color: rgba(255, 255, 255, .4);
@@ -354,11 +328,7 @@ header {
     padding: 70px 0;
     border-top: 1px solid #e7e7e7;
 }
-.contact-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+.contact-wrap { /* 用了flex见头部 */
     margin: 0 -60px;
 }
 .contact form {
@@ -369,9 +339,6 @@ header {
     text-align: center;
     border: 1px solid rgba(20, 20, 20, .1);
     border-radius: 10px;
-}
-.contact form > h4 {
-    color: #141414;
 }
 .contact form > input,
 .contact form > button,
@@ -396,16 +363,8 @@ header {
 }
 .contact-text {
     flex: 1 1 200px;
-    margin: 0 60px;
+    margin: 30px 60px;
     max-width: 360px;
-}
-.contact-text-title h2 {
-    font-size: 42px;
-    color: #141414;
-}
-.contact-text-title p {
-    margin-top: 30px;
-    color: rgba(20, 20, 20, .7);
 }
 .contact-text-content {
     margin-top: 65px;
@@ -416,7 +375,6 @@ header {
     line-height: 1.9;
     font-style: normal;
     font-weight: bold;
-    color: #141414;
     background: no-repeat left 6px;
 }
 .contact-text-content p:nth-child(1) {
@@ -428,10 +386,7 @@ header {
 .contact-text-content p:nth-child(3) {
     background-image: url('../img/mail.png');
 }
-footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+footer { /* 用了flex见头部 */
     padding: 85px 10px 124px;
     background: #141414;
 }
@@ -452,6 +407,7 @@ footer {
     margin-top: 14px;
     color: rgba(255, 255, 255, .3);
 }
+/* 图标处理 */
 .footer-item-icon {
     margin-top: 30px;
 }

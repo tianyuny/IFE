@@ -245,19 +245,26 @@ header {
     max-width: 410px;
     margin: 20px 30px;
 }
-.example-item-text h4 {
+.example-item-text > h4 {
     font-size: 20px;
     color: #141414;
 }
-.example-item-text p {
+.example-item-text > p {
     margin-top: 30px;
     color: rgba(20, 20, 20, .7);
 }
-.example-item img {
+.example-item > img {
     margin: 0 30px;
     width: 570px;
     max-width: 100%;
-    background: #222;
+    background: #222 no-repeat;
+    background-size: 100%;
+}
+.example-item:nth-child(1) > img {
+    background-image: url('../img/example-1.png');
+}
+.example-item:nth-child(2) > img {
+    background-image: url('../img/example-2.png');
 }
 .example-item:first-child img {
     order: -1;

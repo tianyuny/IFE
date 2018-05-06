@@ -1,0 +1,145 @@
+.test {
+    height: 20000px;
+    background: red;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+button {
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+html {
+    height: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+    height: 100%;
+    font-size: 14px;
+}
+body,
+.menu,
+.menu-list,
+
+.main,
+.header,
+.main-container,
+.main-search,
+.main-search-go,
+.main-content,
+.main-content-head {
+    display: -webkit-flex;
+    display: flex;
+}
+
+/* 左侧菜单 */
+.menu {
+    width: 350px;
+}
+.menu-list {
+    -webkit-flex-direction: column;
+            flex-directoin: column;
+}
+.menu-list-item {
+    -webkit-flex: 1;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.menu-list-info {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.menu-prima {
+    width: 100px;
+    background: #1d2531;
+}
+.menu-second {
+    width: 250px;
+    background: #222c3c;
+}
+/* 左侧菜单结束 */
+
+.main {
+    -webkit-flex: 1;
+            flex: 1;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+}
+.header {
+    -webkit-justify-content: space-between;
+             justify-content: space-between;
+    -webkit-align-items: center;
+            align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #e6e8ec;
+}
+.main-container,
+.main-content {
+    -webkit-flex: auto;
+            flex: auto;
+    height: 100%;
+    height: calc(100% - 80px);
+}
+.main-search,
+.main-content {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+}
+.main-search {
+    width: 400px;
+    border-right: 1px solid #e6e9ec;
+}
+.main-search-go,
+.main-content-head {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    height: 70px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.main-search-go {
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.main-content-head {
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.main-search-content,
+.main-content-dialog {
+    flex: 1;
+    height: 100%;
+}
+.main-search-content {
+    padding-bottom: 50px;
+    overflow-y: auto;
+}
+
+
+
+
+

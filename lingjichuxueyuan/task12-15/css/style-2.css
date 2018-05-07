@@ -88,16 +88,29 @@
 }
 /* 次要菜单 */
 .menu-second {
-    padding: 10px 30px;
+    padding: 10px 0;
     width: 250px;
     background: #222c3c;
 }
 .menu-second-item {
-    margin: 22px 0 20px;
+    margin: 22px 30px 20px;
 }
 .menu-second-title {
     font-size: 12px;
     color: #5b6779;
+}
+.menu-second-item .active {
+    position: relative;
+    color: #fff;
+}
+.menu-second-item .active:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -32px;
+    margin-top: -3px;
+    border: 3px solid #2399fa;
+    border-radius: 50%;
 }
 .menu-second-title h4 {
     display: inline-block;
@@ -116,7 +129,7 @@
 }
 /* 次要菜单底部 */
 .menu-second-info {
-    padding: 20px 0;
+    padding: 20px 30px;
     color: #fff;
 }
 .menu-second-info-title {
@@ -393,7 +406,7 @@
     font-size: 0;
     cursor: pointer;
 }
-.dial-item-content-img:hover:before {
+.dial-item-content-img:before {
     content: '';
     position: absolute;
     top: 0;
@@ -401,6 +414,10 @@
     width: 100%;
     height: 100%;
     border-radius: 4px;
+    background: rgba(0, 0, 0, 0);
+    transition: all .5s;
+}
+.dial-item-content-img:hover:before {
     background: rgba(0, 0, 0, .3);
 }
 .dial-item-content-img:hover:after {

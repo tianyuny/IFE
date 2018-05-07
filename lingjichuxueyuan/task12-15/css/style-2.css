@@ -1,0 +1,431 @@
+
+.user {
+    padding: 7px 0;
+    width: 210px;
+    height: 60px;
+}
+.user img {
+    float: left;
+    margin-right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+.user strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #585d68;
+}
+.user span {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    color: #b5b5b5;
+}
+
+/* 提示信息 */
+[class|=hint] {
+    float: right;
+    display: inline-block;
+    padding: 0 8px;
+    min-width: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    border-radius: 12px;
+}
+/* 数量提示 */
+.hint-num {
+    background: #2c9ff6;
+}
+/* 警告提示 */
+.hint-warn {
+    background: #dd3b1f
+}
+
+
+/* 左侧菜单 */
+/* 左上角按钮 */
+.menu-prima {
+    width: 100px;
+    background: #1d2531;
+}
+.menu-prima-item > button {
+    display: block;
+    margin: 20px auto;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+/* 添加按钮 */
+.menu-prima-add {
+    text-align: center;
+    font-size: 40px;
+    color: #2d3848;
+    border: 3px solid;
+}
+/* 主菜单底部 */
+.menu-prima-info {
+    padding: 20px 0;
+    text-align: center;
+}
+.menu-prima-info > button {
+    margin: 0 8px;
+    width: 16px;
+    height: 16px;
+}
+.menu-prima-info-grid {
+    background: url('../img/menu-grid.png');
+}
+/* 设置按钮 */
+.menu-setting {
+    width: 16px;
+    height: 16px;
+    background: url('../img/menu-setting.png');
+}
+/* 次要菜单 */
+.menu-second {
+    padding: 10px 30px;
+    width: 250px;
+    background: #222c3c;
+}
+.menu-second-item {
+    margin: 22px 0 20px;
+}
+.menu-second-title {
+    font-size: 12px;
+    color: #5b6779;
+}
+.menu-second-title h4 {
+    display: inline-block;
+}
+.menu-second-title .menu-setting {
+    float: right;
+}
+.menu-second-item li {
+    margin-top: 25px;
+    color: #b7c0cd;
+}
+.menu-second-item img {
+    width: 31px;
+    padding-right: 15px;
+    vertical-align: -1px;
+}
+/* 次要菜单底部 */
+.menu-second-info {
+    padding: 20px 0;
+    color: #fff;
+}
+.menu-second-info-title {
+    float: left;
+}
+.menu-second-info-value {
+    float: right;
+}
+/* 进度条 */
+.menu-second-info-bar {
+    margin-top: 30px;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(71, 83, 100, .3);
+}
+/* 进度 */
+.menu-second-info-bar:before {
+    content: '';
+    display: block;
+    width: 18.125%;
+    height: 100%;
+    border-radius: 2px;
+    background: -webkit-linear-gradient(left, #805ce6, #9c8ee3);
+    background:    -moz-linear-gradient(right, #805ce6, #9c8ee3);
+    background:      -o-linear-gradient(right, #805ce6, #9c8ee3);
+    background:         linear-gradient(to right, #805ce6, #9c8ee3);
+}
+
+/* 右侧内容 */
+/* 头部 */
+.head {
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+    -webkit-align-items: center;
+            align-items: center;
+}
+.header {
+    padding: 0 30px;
+    height: 80px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.header-user {
+    position: relative;
+}
+.header-user:after {
+    content: '>';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-size: 12px;
+    color: #b5b5b5;
+    transform: translate(-50%, -50%) scale(2, 1) rotate(90deg);
+}
+.header-user strong {
+    color: #2399f1;
+}
+.header-user .img {
+    float: left;
+    position: relative;
+}
+.header-user .img:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff url('../img/user-status.png') no-repeat center;
+}
+.main-title {
+    font-size: 24px;
+    font-weight: normal;
+    color: #354052;
+}
+.main-content {
+    height: calc(100% - 80px);
+}
+/* search */
+.search {
+    width: 400px;
+    border-right: 1px solid #e6e9ec;
+}
+.search-go {
+    height: 70px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.search-go form {
+    display: block;
+    margin: 16px auto;
+    width: 340px;
+    height: 36px;
+    border: 1px solid #e6e9ec;
+    border-radius: 4px;
+}
+.search-go input {
+    padding: 0 14px;
+    width: 300px;
+    height: 34px;
+}
+.search-go button {
+    margin-right: -2px;
+    width: 34px;
+    height: 34px;
+    background: url('../img/icon-search.png') no-repeat center;
+}
+
+.result {
+    padding: 10px 30px;
+    height: 130px;
+    border-bottom: 1px solid #e6e9ec;
+    overflow: hidden;
+}
+.result p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.result .hint-num {
+    margin-top: 16px;
+}
+.result-title {
+    overflow: hidden;
+}
+.result-title > .user {
+    float: left;
+}
+.result-title > .time {
+    float: right;
+    margin-top: 20px;
+    color: #7f8fa4;
+}
+.result.active {
+    padding-left: 27px;
+    border-left: 3px solid #2399f1;
+}
+.result.active strong {
+    position: relative;
+    padding-left: 80px;
+    color: #2399f1;
+}
+.result.active strong:before {
+    content: '·';
+    position: absolute;
+    top: 50%;
+    left: 63px;
+    transform: translate(0, -55%);
+    font-size: 2em;
+}
+.dial-head {
+    height: 70px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.dial-head h3 {
+    position: relative;
+    margin-left: 30px;
+    width: 120px;
+    font-size: 18px;
+    color: #585d68;
+}
+.dial-head h3:after {
+    content: '·';
+    position: absolute;
+    top: -3px;
+    right: -10px;
+    line-height: 1;
+    font-size: 30px;
+    color: #1bb934;
+}
+.dial-btn {
+    display: inline-block;
+    font-size: 0;
+    border: 1px solid #ced0da;
+    border-radius: 4px;
+}
+.dial-btn > button {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: baseline;
+    text-align: center;
+}
+.dial-btn img {
+    height: 16px;
+}
+.dial-btn > button + button {
+    border-left: 1px solid #ced0da;
+}
+.dial-tool {
+    vertical-align: baseline;
+}
+.dial-page {
+    display: inline-block;
+    margin: 0 20px 0 45px;
+}
+.dial-page button {
+    position: relative;
+}
+.dial-page button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -6px;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 6px solid rgba(0, 0, 0, 0);
+}
+.dial-page button:first-child:before {
+    margin-left: -9px;
+    border-right-color: #ced0da;
+}
+.dial-page button:last-child:before {
+    margin-right: -9px;
+    border-left-color: #ced0da;
+}
+.dial-item {
+    position: relative;
+    margin-top: 10px;
+    border-top: 1px solid #ced0da;
+}
+.dial-item.new {
+    border-color: #2399f1;
+}
+.dial-item.new h5 {
+    color: #2399f1;
+}
+.dial-item h5 {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    padding: 0 10px;
+    color: #7f8fa4;
+    background: #fff;
+}
+.dial-item-info {
+    margin: 30px;
+    overflow: hidden;
+}
+.dial-item-info > img {
+    margin-right: 20px;
+    float: left;
+}
+.dial-item-content {
+    overflow: hidden;
+}
+.dial-item-content > h4 {
+    font-size: 16px;
+    color: #585d68;
+}
+.dial-item-content > h4 > span {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 14px;
+    color: #7f8fa4;
+}
+.dial-item-content-img,
+.dial-item-content-img img {
+    border-radius: 4px;
+}
+.dial-item-content-img {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 0;
+    cursor: pointer;
+}
+.dial-item-content-img:hover:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, .3);
+}
+.dial-item-content-img:hover:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .3) url('../img/photo-open.png') no-repeat center;
+}
+.dial-input {
+    margin: 20px auto;
+    width: 90%;
+    height: 54px;
+    border: 1px solid #dfe3e9;
+    border-radius: 4px;
+}
+.dial-input > button {
+    -webkit-flex: 0 0 54px;
+            flex: 0 0 54px;
+    font-size: 25px;
+    color: #9fa9ba;
+    border-right: 1px solid #dfe3e9;
+}
+.dial-input > input {
+    -webkit-flex: 1;
+            flex: 1;
+    padding: 0 10px;
+}

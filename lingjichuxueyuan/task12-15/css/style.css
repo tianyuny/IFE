@@ -1,0 +1,108 @@
+/* 提示信息 */
+[class|=hint] {
+    float: right;
+    display: inline-block;
+    padding: 0 8px;
+    min-width: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    border-radius: 12px;
+}
+/* 数量提示 */
+.hint-num {
+    background: #2c9ff6;
+}
+/* 警告提示 */
+.hint-warn {
+    background: #dd3b1f
+}
+
+
+/* 左侧菜单 */
+/* 左上角按钮 */
+.menu-prima-item > button {
+    display: block;
+    margin: 20px auto;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+/* 添加按钮 */
+.menu-prima-add {
+    text-align: center;
+    font-size: 40px;
+    color: #2d3848;
+    border: 3px solid;
+}
+/* 主菜单底部 */
+.menu-prima-info {
+    text-align: center;
+}
+.menu-prima-info > button {
+    margin: 0 8px;
+    width: 16px;
+    height: 16px;
+}
+.menu-prima-info-grid {
+    background: url('../img/menu-grid.png');
+}
+/* 设置按钮 */
+.menu-setting {
+    width: 16px;
+    height: 16px;
+    background: url('../img/menu-setting.png');
+}
+/* 次要菜单 */
+.menu-second {
+    padding: 10px 30px;
+}
+.menu-second-item {
+    margin: 22px 0 20px;
+}
+.menu-second-title {
+    font-size: 12px;
+    color: #5b6779;
+}
+.menu-second-title h4 {
+    display: inline-block;
+}
+.menu-second-title .menu-setting {
+    float: right;
+}
+.menu-second-item li {
+    margin-top: 25px;
+    color: #b7c0cd;
+}
+/* 次要菜单底部 */
+.menu-second-info {
+    color: #fff;
+}
+.menu-second-info-title {
+    float: left;
+}
+.menu-second-info-value {
+    float: right;
+}
+/* 进度条 */
+.menu-second-info-bar {
+    margin-top: 30px;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(71, 83, 100, .3);
+}
+/* 进度 */
+.menu-second-info-bar:before {
+    content: '';
+    display: block;
+    width: 18.125%;
+    height: 100%;
+    border-radius: 2px;
+    background: -webkit-linear-gradient(left, #805ce6, #9c8ee3);
+    background:    -moz-linear-gradient(right, #805ce6, #9c8ee3);
+    background:      -o-linear-gradient(right, #805ce6, #9c8ee3);
+    background:         linear-gradient(to right, #805ce6, #9c8ee3);
+}

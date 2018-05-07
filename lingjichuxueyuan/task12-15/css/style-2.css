@@ -315,7 +315,9 @@
 }
 .dial-page {
     display: inline-block;
-    margin: 0 20px 0 45px;
+    margin: 0 20px 0 25px;
+    padding-left: 20px;
+    border-left: 1px solid #ced0da;
 }
 .dial-page button {
     position: relative;

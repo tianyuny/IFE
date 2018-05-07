@@ -4,103 +4,251 @@
     <meta charset="UTF-8">
     <title>Messages</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout-2.css">
+    <link rel="stylesheet" href="css/style-2.css">
 </head>
-<body>
-    <aside class="menu">
-        <div class="menu-prima menu-list">
-            <div class="menu-prima-item menu-list-item">
-                <button type="button"><img src="img/menu-1.png"></button>
-                <button type="button"><img src="img/menu-2.png"></button>
-                <button type="button"><img src="img/menu-3.png"></button>
-                <button type="button" class="menu-prima-add">+</button>
+<body class="container">
+<aside class="container item-side">
+    <div class="container-col item-side menu-prima">
+        <div class="item over menu-prima-item">
+            <button type="button"><img src="img/menu-1.png"></button>
+            <button type="button"><img src="img/menu-2.png"></button>
+            <button type="button"><img src="img/menu-3.png"></button>
+            <button type="button" class="menu-prima-add">+</button>
+        </div>
+        <div class="menu-prima-info">
+            <button type="button" class="menu-prima-info-grid"></button>
+            <button type="button" class="menu-setting"></button>
+        </div>
+    </div>
+    <div class="container-col item menu-second">
+        <div class="over item">
+            <div class="menu-second-item">
+                <div class="menu-second-title">
+                    <h4>MENU</h4>
+                    <button type="button" class="menu-setting"></button>
+                </div>
+                <ul>
+                    <li><a href="javascript:">Ovorvicw</a></li>
+                    <li><a href="javascript:">Sales</a> <span class="hint-num">54</span></li>
+                    <li><a href="javascript:">Your 5taff</a></li>
+                    <li><a href="javascript:">Analytics & Targeting</a></li>
+                    <li><a href="javascript:">Whats Now</a></li>
+                </ul>
             </div>
-            <div class="menu-prima-info menu-list-info">
-                <button type="button" class="menu-prima-info-grid"></button>
-                <button type="button" class="menu-setting"></button>
+            <div class="menu-second-item">
+                <div class="menu-second-title">
+                    <h4>YOUR PRODUCTS</h4>
+                    <button type="button" class="menu-setting"></button>
+                </div>
+                <ul>
+                    <li><img src="img/icon-books.png"><a href="javascript:">Books</a></li>
+                    <li><img src="img/icon-tutorials.png"><a href="javascript:">Tutorials</a></li>
+                    <li><img src="img/icon-stocks.png"><a href="javascript:">Stocks</a></li>
+                    <li><img src="img/icon-infograph.png"><a href="javascript:">Infographics</a></li>
+                </ul>
+            </div>
+            <div class="menu-second-item">
+                <div class="menu-second-title">
+                    <h4>DASHBOARD</h4>
+                    <button type="button" class="menu-setting"></button>
+                </div>
+                <ul>
+                    <li><a href="javascript:" class="active">Messages</a> <span class="hint-num">21</span></li>
+                    <li><a href="javascript:">Connections</a></li>
+                    <li><a href="javascript:">Integrations</a> <span class="hint-warn">!</span></li>
+                    <li><a href="javascript:">Account Settings</a></li>
+                    <li><a href="javascript:">Account Settings</a></li>
+                    <li><a href="javascript:">App Settings</a></li>
+                </ul>
             </div>
         </div>
-        <div class="menu-second menu-list">
-            <div class="menu-list-item">
-                <div class="menu-second-item">
-                    <div class="menu-second-title">
-                        <h4>MENU</h4>
-                        <button type="button" class="menu-setting"></button>
-                    </div>
-                    <ul>
-                        <li><a href="javascript:">Ovorvicw</a></li>
-                        <li><a href="javascript:">Sales</a> <span class="hint-num">54</span></li>
-                        <li><a href="javascript:">Your 5taff</a></li>
-                        <li><a href="javascript:">Analytics & Targeting</a></li>
-                        <li><a href="javascript:">Whats Now</a></li>
-                    </ul>
-                </div>
-                <div class="menu-second-item">
-                    <div class="menu-second-title">
-                        <h4>YOUR PRODUCTS</h4>
-                        <button type="button" class="menu-setting"></button>
-                    </div>
-                    <ul>
-                        <li><a href="javascript:">Books</a></li>
-                        <li><a href="javascript:">Tutorials</a></li>
-                        <li><a href="javascript:">Stocks</a></li>
-                        <li><a href="javascript:">Infographics</a></li>
-                    </ul>
-                </div>
-                <div class="menu-second-item">
-                    <div class="menu-second-title">
-                        <h4>DASHBOARD</h4>
-                        <button type="button" class="menu-setting"></button>
-                    </div>
-                    <ul>
-                        <li><a href="javascript:" class="active">Messages</a> <span class="hint-num">21</span></li>
-                        <li><a href="javascript:">Connections</a></li>
-                        <li><a href="javascript:">Integrations</a> <span class="hint-warn">!</span></li>
-                        <li><a href="javascript:">Account Settings</a></li>
-                        <li><a href="javascript:">Account Settings</a></li>
-                        <li><a href="javascript:">App Settings</a></li>
-                    </ul>
-                </div>
+        <div class="menu-second-info">
+            <p>
+                <span class="menu-second-info-title">Monthly Goals</span>
+                <span class="menu-second-info-value">$580/$3200</span>
+            </p>
+            <div class="menu-second-info-bar"></div>
+        </div>
+    </div>
+</aside>
+
+<main class="container-col item">
+    <header class="container item-side head header">
+        <h2 class="main-title">Messages</h2>
+        <h1 class="header-user user">
+            <div class="img"><img src="img/user.png"></div>
+            <strong>Jordan J.</strong>
+            <span>Administrator</span>
+        </h1>
+    </header>
+    <section class="container item main-content">
+        <div class="container-col item-side search">
+            <div class="item-side search-go">
+                <form action="javascript:">
+                    <input type="search" placeholder="Search">
+                    <button type="submit"></button>
+                </form>
             </div>
-            <div class="menu-second-info menu-list-info">
-                <p>
-                    <span class="menu-second-info-title">Monthly Goals</span>
-                    <span class="menu-second-info-value">$580/$3200</span>
-                </p>
-                <div class="menu-second-info-bar"></div>
+            <div class="item over">
+                <div class="result active">
+                    <div class="result-title">
+                        <div class="user">
+                            <img src="img/search-user-1.png">
+                            <strong>Bessie Berry</strong>
+                            <span>Twitter</span>
+                        </div>
+                        <span class="time">3m</span>
+                    </div>
+                    <span class="hint-num">4</span>
+                    <p>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable...</p>
+                </div>
+                <div class="result">
+                    <div class="result-title">
+                        <div class="user">
+                            <img src="img/search-user-2.png">
+                            <strong>Victor Weber</strong>
+                            <span>Twitter</span>
+                        </div>
+                        <span class="time">8m</span>
+                    </div>
+                    <p>I shared this on my fb wall a few months back, and I thought I'd share it here again because it's such a great...</p>
+                </div>
+                <div class="result">
+                    <div class="result-title">
+                        <div class="user">
+                            <img src="img/search-user-3.png">
+                            <strong>Dustin Benson</strong>
+                            <span>Facebook</span>
+                        </div>
+                        <span class="time">Yesterday</span>
+                    </div>
+                    <p>If there is anyone who needs an invitation please add yourself in the comments of this post!</p>
+                </div>
+                <div class="result">
+                    <div class="result-title">
+                        <div class="user">
+                            <img src="img/search-user-4.png">
+                            <strong>Jack Mason</strong>
+                            <span>Yahoo</span>
+                        </div>
+                        <span class="time">Yesterday</span>
+                    </div>
+                    <p>BruteDC is a peer-to-peer movie+tv series sharing and downloading platform which works on intranet inside...</p>
+                </div>
+                <div class="result">
+                    <div class="result-title">
+                        <div class="user">
+                            <img src="img/search-user-5.png">
+                            <strong>Stephen Shelton</strong>
+                            <span>Snapchat</span>
+                        </div>
+                        <span class="time">13 Jun</span>
+                    </div>
+                    <p>Yes, p2p traffic is often filtered (QoSed). Although i do use BT on O2 wires, and in good days dl speed...</p>
+                </div>
+                <div class="result">
+                    <div class="result-title">
+                        <div class="user">
+                            <img src="img/search-user-6.png">
+                            <strong>Sally Willis</strong>
+                            <span>Twitter</span>
+                        </div>
+                        <span class="time">12 Jun</span>
+                    </div>
+                    <p>Yes, it's O2: 'internet extreme', which is no longer offered.</p>
+                </div>
+                <div class="result">
+                    <div class="result-title">
+                        <div class="user">
+                            <img src="img/search-user-7.png">
+                            <strong>Robert Patton</strong>
+                            <span>A Team</span>
+                        </div>
+                        <span class="time">9 Jun</span>
+                    </div>
+                    <p>I change my service from this 4Mb plan to their much cheaper 8Mb plan, my speed will dramatically decrease.</p>
+                </div>
             </div>
         </div>
-    </aside>
-    <main class="main">
-        <header class="header">
-            <h2 class="main-title">Messages</h2>
-            <h1 class="header-user">user</h1>
-        </header>
-        <section class="main-container">
-            <div class="main-search">
-                <div class="main-search-go">
-                    search
-                </div>
-                <div class="main-search-content">
-                    search-item
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    search-item
+        <div class="container-col item dial">
+            <div class="container item-side head dial-head">
+                <h3>Bessie Berry</h3>
+                <div>
+                    <div class="dial-tool dial-btn">
+                        <button type="tutton"><img src="img/icon-user.png"></button>
+                        <button type="tutton"><img src="img/icon-upload.png"></button>
+                        <button type="tutton"><img src="img/icon-trash.png"></button>
+                    </div>
+                    <div class="dial-page">
+                        <span>1 of 28</span>
+                        <div class="dial-btn">
+                            <button type="tutton"><img></button>
+                            <button type="tutton"><img></button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="main-content">
-                <div class="main-content-head">
-                    head
+            <div class="item dial-content over">
+                <div class="dial-item">
+                    <h5 class="dial-item-time">Tuesday</h5>
+                    <div class="dial-item-info">
+                        <img src="img/search-user-1.png">
+                        <div class="dial-item-content">
+                            <h4>Bessie Berry <span>8:31AM</span></h4>
+                            <p>Hi guys Ive got the O2 package and have really slow internet. A speed check online said i can get 3mbps but it seems more like 0.5 these days, just freezing and taking ages to open pages and open audio files for example. I have decided to switch to the UPC package which offers 10mbps but do you think i will get it?</p>
+                        </div>
+                    </div>
+                    <div class="dial-item-info">
+                        <img src="img/user.png">
+                        <div class="dial-item-content">
+                            <h4>Jordan Jackson<span>8:31AM</span></h4>
+                            <p>I have internet for 9 month and nevere could benefit from the full capacity of 5Mbit/s as it is filtered by O2 when it detect traffic on public p2p sharing in my situation all my internet speed slows to 512Kbit/s. I never had 400KB/s on when downloading from p2p public servers like torrent emule etc. I downoad with 500KB/s from private trakers instead. So conlcusion O2 block trafic on p2p connections. I have made hundreds of test in Italy and Sweden and Romania with the same file to doanload with the same setting and same antivirus and just needed to open ports in firewall and forward same ports and the speed was at full capacity in 1 minute. here in 9 month never had this luck.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="main-content-dialog">
-                    item-content
+                <div class="dial-item">
+                    <h5 class="dial-item-time">Tuesday</h5>
+                    <div class="dial-item-info">
+                        <img src="img/search-user-1.png">
+                        <div class="dial-item-content">
+                            <h4>Bessie Berry <span>8:31AM</span></h4>
+                            <p>Funny comparison. so would the proper antivirus not slow down the internet as much or do you mean a freebie doenst protect the computer from viruses?</p>
+                        </div>
+                    </div>
+                    <div class="dial-item-info">
+                        <img src="img/user.png">
+                        <div class="dial-item-content">
+                            <h4>Jordan Jackson<span>8:31AM</span></h4>
+                            <p>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2, and haven't had any problems. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. I max out at about 3 Mb/sec down, and 350 Kb/sec up. Probably because of a noisy telephone line, not because I'm being throttled. When my uploads go over 25 KB/sec (note, bytes, not bits), my download speed suffers. This is expected, as downloads require upload bandwidth as well. </p>
+                            <div class="dial-item-content-img">
+                                <img src="img/photo-1-min.png">
+                            </div>
+                            <div class="dial-item-content-img">
+                                <img src="img/photo-2-min.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dial-item new">
+                    <h5>New Messages</h5>
+                    <div class="dial-item-info">
+                        <img src="img/search-user-1.png">
+                        <div class="dial-item-content">
+                            <h4>Bessie Berry <span>8:31AM</span></h4>
+                            <p>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="item-side">
+                <form action="" class="dial-input container">
+                    <button type="submit">＋</button>
+                    <input type="text" placeholder="enter message">
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
 </body>
 </html>

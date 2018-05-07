@@ -194,6 +194,7 @@
     color: #354052;
 }
 .main-content {
+    flex: auto;
     height: calc(100% - 80px);
 }
 /* search */
@@ -238,6 +239,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .result .hint-num {
     margin-top: 16px;
 }

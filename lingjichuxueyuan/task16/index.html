@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript</title>
+</head>
+<body>
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+    var num1 = document.getElementById('first-number'),
+        num2 = document.getElementById('second-number'),
+        result = document.getElementById('result');
+    document.addEventListener('click', function(e) {
+       var target = e.target,
+           value1 = parseFloat(num1.value),
+           value2 = parseFloat(num2.value),
+           value;
+       switch (target.id) {
+           case 'add-btn' :
+               value = value1 + value2;
+               break;
+           case 'minus-btn' :
+               value = value1 - value2;
+               break;
+           case 'times-btn' :
+               value = value1 * value2;
+               break;
+           case 'divide-btn' :
+               value = value1 / value2;
+               break;
+           default :
+               return;
+       }
+        result.innerHTML = value;
+    });
+    </script>
+</body>
+</html>

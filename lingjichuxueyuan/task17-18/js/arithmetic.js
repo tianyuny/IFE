@@ -3,25 +3,19 @@
         num2 = document.getElementById('second-number'),
         result = document.getElementById('result');
     document.addEventListener('click', function(e) {
-        var target = e.target,
+        var target = e.target, value,
             input = [parseFloat(num1.value), parseFloat(num2.value)],
-            value = {
-                'add-btn': input[0] + input[1],
-                'minus-btn': input[0] - input[1],
-                'times-btn': input[0] * input[1],
-                'divide-btn': input[0] / input[1]
-            }[target.id];
-        if(value !== undefined) {
-            for(var i = 0; i < input.length; i++) {
-                if(isNaN(input[i])) {
-                    console.log('请输入数字');
-                    result.innerHTML = '运算结果：'
-                    return;
-                }
-            }
-            if(target.id == 'divide-btn' && input[1] == 0) {
+            sym = {'add-btn': '+', 'minus-btn': '-',
+                'times-btn': '*', 'divide-btn': '/'}[target.id];
+        if(sym !== undefined) {
+            if(isNaN(input[0] || isNaN(input[1]))){
+                console.log('请输入数字');
+                value = '';
+            }else if(sym == '/' && input[1] == 0) {
                 console.log('除数不能为零');
                 value = '';
+            }else {
+                value = eval(input[0] + sym + input[1]);
             }
             result.innerHTML = '运算结果：' + value;
         }

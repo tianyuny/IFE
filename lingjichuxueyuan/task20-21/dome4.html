@@ -62,15 +62,14 @@
     var img = document.getElementById('img');
     img.style.cssText = 'width: 480px; height: 480px; background: url("img/erik_ce204002.jpg") no-repeat left 0';
     function background(y, h, direct) {
-        img.style.backgroundPositionY = -y + 'px';
         y += 480 * direct;
+        img.style.backgroundPositionY = -y + 'px';
         if(y >= h || y<= 0) {
-            y -= 480 * direct;
             direct = direct * -1;
         }
         setTimeout(background, 100, y, h, direct);
     }
-    background(0, 8160, 1);
+    background(0, 7680, 1);
     </script>
 </body>
 </html>

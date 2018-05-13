@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时</title>
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <div id="img"></div>
+    <script>
+        var btn = document.getElementById('fade-btn'),
+            obj = document.getElementById('fade-obj');
+
+        /*btn.addEventListener('click', function () {
+            function fade(opacity, base, txt) {
+            opacity += base;
+            if(opacity > 1 || opacity < 0) {
+                btn.textContent = txt;
+                btn.disabled = false;
+                return;
+            }
+
+            obj.style.opacity = opacity;
+            setTimeout(fade, 20, opacity, base, txt);
+        }
+            this.disabled = true;
+            if(this.textContent === '淡出') {
+                fade(1, -0.01, '淡入');
+            }else {
+                fade(0, 0.01, '淡出');
+            }
+        });*/
+
+        btn.addEventListener('click', function () {
+            function fade2() {
+                opacity += base;
+                obj.style.opacity = opacity;
+                if(opacity > 1 || opacity < 0) {
+                    btn.textContent = txt;
+                    btn.disabled = false;
+                    clearInterval(clear);
+                }
+            }
+
+            var clear = null, opacity, base, txt;
+            this.disabled = true;
+            if(this.textContent === '淡出') {
+                opacity = 1;
+                base = -0.01;
+                txt = '淡入';
+                clear = setInterval(fade2, 20);
+            }else {
+                opacity = 0;
+                base = 0.01;
+                txt = '淡出';
+                clear = setInterval(fade2, 20);
+            }
+        });
+    </script>
+    <script>
+    var img = document.getElementById('img');
+    img.style.cssText = 'width: 480px; height: 480px; background: url("img/erik_ce204002.jpg") no-repeat left 0';
+    function background(y, h, direct) {
+        img.style.backgroundPositionY = -y + 'px';
+        y += 480 * direct;
+        if(y >= h || y<= 0) {
+            y -= 480 * direct;
+            direct = direct * -1;
+        }
+        setTimeout(background, 100, y, h, direct);
+    }
+    background(0, 8160, 1);
+    </script>
+</body>
+</html>

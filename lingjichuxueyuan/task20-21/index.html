@@ -80,7 +80,7 @@
     </div>
 
     <div class="wrap">
-        <div id="img"></div>
+        <div id="img">图片加载中请稍后</div>
     </div>
     <script>
 
@@ -206,15 +206,20 @@
     !function () {
         let img = document.getElementById('img'),
             top = 0,
-            add = 480;
-        img.style.cssText = 'width: 480px; height: 480px; background: url("img/erik_ce204002.jpg") no-repeat left 0';
-        setInterval(function () {
-            top -= add;
-            img.style.backgroundPositionY = `${top}px`;
-            if(top === 0 || top === -7680) {
-                add *= -1;
-            }
-        }, 100);
+            add = 480,
+            image = new Image();
+        image.src = 'img/erik_ce204002.jpg'; // 预加载
+        image.onload = function () {
+            img.textContent = ''; // 清除文本
+            img.style.cssText = 'width: 480px; height: 480px; background: url("img/erik_ce204002.jpg") no-repeat left 0';
+            setInterval(function () {
+                top -= add;
+                img.style.backgroundPositionY = `${top}px`;
+                if(top === 0 || top === -7680) {
+                    add *= -1;
+                }
+            }, 100);
+        };
     }();
     </script>
 </body>

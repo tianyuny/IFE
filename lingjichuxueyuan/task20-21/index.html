@@ -221,7 +221,7 @@
                 img.textContent = `图片加载中请稍后${txt[i]}`;
                 i++;
             }, 400);
-        //image.src = 'img/erik_ce204002.jpg'; // 预加载
+        image.src = 'img/erik_ce204002.jpg'; // 预加载
         image.onload = function () {
             clearInterval(exce);
             img.textContent = ''; // 清除文本

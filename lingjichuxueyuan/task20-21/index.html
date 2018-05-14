@@ -23,6 +23,10 @@
             border: 1px solid #000;
             cursor: pointer;
         }
+        .img {
+            width: 480px;
+            height: 480px;
+        }
     </style>
 </head>
 <body>
@@ -80,7 +84,7 @@
     </div>
 
     <div class="wrap">
-        <div id="img">图片加载中请稍后</div>
+        <div id="img" class="img">图片加载中请稍后</div>
     </div>
     <script>
 
@@ -207,11 +211,20 @@
         let img = document.getElementById('img'),
             top = 0,
             add = 480,
-            image = new Image();
+            image = new Image(),
+            txt = ['.', '..', '...']
+            exce = setInterval(function () {
+                if(!txt[i]) {
+                    i = 0;
+                }
+                img.textContent = `图片加载中请稍后${txt[i]}`;
+                i++;
+            }, 200);
         image.src = 'img/erik_ce204002.jpg'; // 预加载
         image.onload = function () {
+            clearInterval(exce);
             img.textContent = ''; // 清除文本
-            img.style.cssText = 'width: 480px; height: 480px; background: url("img/erik_ce204002.jpg") no-repeat left 0';
+            img.style.cssText = 'background: url("img/erik_ce204002.jpg") no-repeat left 0';
             setInterval(function () {
                 top -= add;
                 img.style.backgroundPositionY = `${top}px`;

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+    <div id="time"></div>
+    <div id="time1"></div>
+    <div id="time2"></div>
+
+    <select id="year-select" data-time="FullYear"></select>
+    <select id="month-select" data-time="Month"></select>
+    <select id="day-select" data-time="Date"></select>
+    <select id="hour-select" data-time="Hours"></select>
+    <select id="minite-select" data-time="Minutes"></select>
+    <select id="second-select" data-time="Seconds"></select>
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+
+    <script>
+    function Go() {
+        console.log("Go");
+    }
+
+    function GoSteps(n) {
+        if(n === undefined) {
+            n = 1;
+        }
+        n = Number(n);
+        while(n >= 1) {
+            console.log("Go");
+            n--;
+        }
+    }
+
+    GoSteps(10); // Go 10次
+    GoSteps(1); // Go 1次
+    GoSteps(); // Go 1次，认为缺少参数时，默认参数为1
+    GoSteps(0);  // 0次
+    GoSteps(-1);  // 0次
+    GoSteps(1.4);  // Go 1次
+    GoSteps(1.6);  // Go 1次
+    GoSteps(-1);  // 0次
+    GoSteps(true);  // Go 1次
+    GoSteps(false);  // 0次
+    GoSteps("Test");  // 0次
+    GoSteps(NaN);  // 0次
+    GoSteps(null);  // 0次
+
+    // 做一个最简单的时钟
+    !function () {
+        function getTime() {
+            let data = new Date(),
+                year = data.getFullYear(),
+                month = doubleDigit(data.getMonth() + 1),
+                date = doubleDigit(data.getDate()),
+                day = ['日', '一', '二', '三', '四', '五', '六'][data.getDay()],
+                hms = [doubleDigit(data.getHours()),
+                    doubleDigit(data.getMinutes()),
+                    doubleDigit(data.getSeconds())];
+            function doubleDigit(num) {
+                if (num < 10) {
+                    num = '0' + num;
+                }
+                return num;
+            }
+            time.textContent = `${year}年${month}月${date}日星期${day} ${hms.join(':')}`;
+        }
+        let time = document.getElementById('time');
+        setInterval(getTime, 500);
+    }();
+
+    // 需求做一些小的变更
+    !function () {
+        function getTime() {
+            let data = new Date();
+
+            function doubleDigit(num) {
+                return  ('0' + num).substr(-2);
+            }
+            function getDate() {
+                let date = [data.getFullYear(),
+                    doubleDigit(data.getMonth() + 1),
+                    doubleDigit(data.getDate())];
+                return date.join('-');
+            }
+            function getDay() {
+                let day = data.getDay();
+                return ['Sunday',
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday'][day];
+            }
+            function getHms() {
+                let hms = [doubleDigit(data.getHours()),
+                        doubleDigit(data.getMinutes()),
+                        doubleDigit(data.getSeconds())],
+                    sys = 'AM';
+                if (hms[0] > 11) {
+                    sys = 'PM';
+                    if (hms[0] > 12) {
+                        hms[0] = doubleDigit(hms[0] - 12);
+                    }
+                }
+                return  `${hms.join(':')} ${sys}`;
+            }
+            time.textContent = `${getDate()} ${getDay()} ${getHms()}`;
+        }
+        let time = document.getElementById('time1');
+        setInterval(getTime, 500);
+    }();
+
+    // 基于上面的需求，要求，同时在页面上，输出两种格式的日期时间
+    !function () {
+        function getTime() {
+            let data = new Date();
+
+            function doubleDigit(num) {
+                return  ('0' + num).substr(-2);
+            }
+            function getDate(type) {
+                let date = [data.getFullYear(),
+                    doubleDigit(data.getMonth() + 1),
+                    doubleDigit(data.getDate())];
+                if (type === 1) {
+                    return date.join('-');
+                }
+                return date[0] + '年' + date[1] + '月' + date[2] + '日';
+            }
+            function getDay(type) {
+                let day = data.getDay();
+                if (type === 1) {
+                    return ['Sunday',
+                        'Monday',
+                        'Tuesday',
+                        'Wednesday',
+                        'Thursday',
+                        'Friday',
+                        'Saturday'][day];
+                }
+                return '星期' + ['日', '一', '二', '三', '四', '五', '六'][day];
+            }
+            function getHms(type) {
+                let hms = [doubleDigit(data.getHours()),
+                        doubleDigit(data.getMinutes()),
+                        doubleDigit(data.getSeconds())],
+                    sys = 'AM';
+                if (type === 1) {
+                    if (hms[0] > 11) {
+                        sys = 'PM';
+                        if (hms[0] > 12) {
+                            hms[0] = doubleDigit(hms[0] - 12);
+                        }
+                    }
+                    return  `${hms.join(':')} ${sys}`;
+                }
+                return hms.join(':');
+            }
+            time.innerHTML = `${getDate()} ${getDay()} ${getHms()}<br>
+                                ${getDate(1)} ${getDay(1)} ${getHms(1)}`;
+        }
+        let time = document.getElementById('time2');
+        setInterval(getTime, 500);
+    }();
+
+    !function () {
+        function resetDay(newV, oldV) {
+            let sub = newV - oldV;
+            if (sub < 0) {
+                sub *= -1;
+                for(let i = 0; i < sub; i++) {
+                    day.removeChild(day.children[day.children.length - 1]);
+                }
+            } else {
+                day.innerHTML += cerateOpts(oldV + 1, sub);
+            }
+        }
+        function doubleDigit(num) {
+            if ((num + '').length < 2) {
+                num = '0' + num;
+            }
+            return  num;
+        }
+        function cerateOpts(val, num, target) {
+            let html = '';
+            for(let i = 0; i < num; i++, val++) {
+                html += `<option value="${val}"${target === val ? ' selected' : ''}>${doubleDigit(val)}</option>`;
+            }
+            return html;
+        }
+        function getDays() {
+            let days;
+            function isBig(mon) {
+                return mon > 7 ? mon % 2 === 0 : mon % 2 === 1;
+            }
+            function isLeap(y) {
+                return !(y % 100 ? y % 4 : y % 400);
+            }
+            if (isBig(month.value)) {
+                days = 31;
+            } else if (month.value == 2) {
+                days = isLeap(year.value) ? 29 : 28;
+            } else {
+                days = 30;
+            }
+            return days;
+        }
+        function timeDiffer() {
+            let now = new Date(),
+                differ = target - now,
+                txt = '还有',
+                s,
+                m,
+                h,
+                d;
+            if (differ < 0) {
+                txt = '已经过去';
+                differ *= -1;
+            }
+            differ = Math.floor(differ / 1000); // 换算为秒
+            s = differ % 60;
+            differ = Math.floor(differ / 60); // 换算为分
+            m = differ % 60;
+            differ = Math.floor(differ / 60); // 换算为时
+            h = differ % 24;
+            d =  Math.floor(differ / 24);
+            result.textContent = `现在距离 ${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日
+                星期${['日', '一', '二', '三', '四', '五', '六'][now.getDay()]}
+                ${[doubleDigit(now.getHours()),
+                doubleDigit(now.getMinutes()),
+                doubleDigit(now.getSeconds())].join(':')}
+                ${txt} ${d} 天 ${h} 小时 ${m} 分 ${s} 秒`;
+            setTimeout(timeDiffer, 500);
+        }
+
+        let select = document.querySelectorAll('select'),
+            year = select[0],
+            month = select[1],
+            day = select[2],
+            hour = select[3],
+            minite = select[4],
+            second = select[5],
+            result = document.getElementById('result-wrapper'),
+            target = new Date(),
+            y = target.getFullYear();
+        year.innerHTML = cerateOpts(y - 100, 200, y);
+        month.innerHTML = cerateOpts(1, 12, target.getMonth() + 1);
+        day.innerHTML = cerateOpts(1, getDays(), target.getDate());
+        hour.innerHTML = cerateOpts(0, 24, target.getHours());
+        minite.innerHTML = cerateOpts(0, 60, target.getMinutes()),
+        second.innerHTML = cerateOpts(0, 60, target.getSeconds());
+        for (let i = 0, len = select.length; i < len; i++) {
+            select[i].addEventListener('change', function () {
+                let set = this.getAttribute('data-time');
+                target[`set${set}`](set === 'Month' ? this.value - 1 : this.value);
+            });
+        }
+        year.addEventListener('change', function () {
+            let y = this.value;
+            if (month.value == 2) {
+                resetDay(getDays(), day.children.length);
+            }
+        });
+        month.addEventListener('change', function () {
+            let y = this.value;
+            resetDay(getDays(), day.children.length);
+        });
+        timeDiffer();
+    }();
+    </script>
+</body>
+</html>

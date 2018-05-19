@@ -167,8 +167,10 @@
 
     // 倒数时间
     !function () {
-        function resetDay(newV, oldV) {
-            let sub = newV - oldV;
+        function resetDay() {
+            let newV = getDays(),
+                oldV = day.children.length,
+                sub = newV - oldV;
             if (sub < 0) {
                 sub *= -1;
                 for(let i = 0; i < sub; i++) {
@@ -207,6 +209,22 @@
                 days = 30;
             }
             return days;
+        }
+        function change(e) {
+            let self = e.target;
+            if (self.tagName === 'SELECT') {
+                let set = self.getAttribute('data-time'),
+                    val = self.value;
+                if (set === 'FullYear') {
+                    if (month.value == 2) {
+                        resetDay();
+                    }
+                } else if (set === 'Month') {
+                    val--;
+                    resetDay();
+                }
+                target[`set${set}`](val);
+            }
         }
         function timeDiffer() {
             let now = new Date(),
@@ -254,22 +272,7 @@
         addOpts(minite, 0, 60, target.getMinutes());
         addOpts(second, 0, 60, target.getSeconds());
 
-        for (let i = 0, len = select.length; i < len; i++) {
-            select[i].addEventListener('change', function () {
-                let set = this.getAttribute('data-time');
-                target[`set${set}`](set === 'Month' ? this.value - 1 : this.value);
-            });
-        }
-        year.addEventListener('change', function () {
-            let y = this.value;
-            if (month.value == 2) {
-                resetDay(getDays(), day.children.length);
-            }
-        });
-        month.addEventListener('change', function () {
-            let y = this.value;
-            resetDay(getDays(), day.children.length);
-        });
+        document.body.addEventListener('change', change);
         timeDiffer();
     }();
     </script>

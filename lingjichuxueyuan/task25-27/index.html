@@ -16,7 +16,6 @@
     <select id="minite-select" data-time="Minutes"></select>
     <select id="second-select" data-time="Seconds"></select>
     <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
-
     <script>
     function Go() {
         console.log("Go");
@@ -166,6 +165,7 @@
         setInterval(getTime, 500);
     }();
 
+    // 倒数时间
     !function () {
         function resetDay(newV, oldV) {
             let sub = newV - oldV;
@@ -175,7 +175,7 @@
                     day.removeChild(day.children[day.children.length - 1]);
                 }
             } else {
-                day.innerHTML += cerateOpts(oldV + 1, sub);
+                addOpts(day, oldV + 1, sub);
             }
         }
         function doubleDigit(num) {
@@ -184,12 +184,12 @@
             }
             return  num;
         }
-        function cerateOpts(val, num, target) {
+        function addOpts(ele, val, num, target) {
             let html = '';
             for(let i = 0; i < num; i++, val++) {
                 html += `<option value="${val}"${target === val ? ' selected' : ''}>${doubleDigit(val)}</option>`;
             }
-            return html;
+            ele.innerHTML +=  html;
         }
         function getDays() {
             let days;
@@ -246,12 +246,14 @@
             result = document.getElementById('result-wrapper'),
             target = new Date(),
             y = target.getFullYear();
-        year.innerHTML = cerateOpts(y - 100, 200, y);
-        month.innerHTML = cerateOpts(1, 12, target.getMonth() + 1);
-        day.innerHTML = cerateOpts(1, getDays(), target.getDate());
-        hour.innerHTML = cerateOpts(0, 24, target.getHours());
-        minite.innerHTML = cerateOpts(0, 60, target.getMinutes()),
-        second.innerHTML = cerateOpts(0, 60, target.getSeconds());
+
+        addOpts(year, y - 100, 200, y);
+        addOpts(month, 1, 12, target.getMonth() + 1);
+        addOpts(day, 1, getDays(), target.getDate());
+        addOpts(hour, 0, 24, target.getHours());
+        addOpts(minite, 0, 60, target.getMinutes());
+        addOpts(second, 0, 60, target.getSeconds());
+
         for (let i = 0, len = select.length; i < len; i++) {
             select[i].addEventListener('change', function () {
                 let set = this.getAttribute('data-time');

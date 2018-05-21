@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+    <style>
+        .wrapper {
+            margin: 100px auto 0;
+            width: 300px;
+            border: 1px solid #ccc;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .email-sug {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .email-sug li {
+            margin: 0;
+            padding: 5px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .email-sug li.active {
+            background: #ffc4ce;
+        }
+        .email-sug li:hover {
+            background: #beddec;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+
+    <script>
+    var email = document.getElementById('email-input');
+    var sug = document.getElementById('email-sug-wrapper');
+    var nowSelectTipIndex  = 0;
+    function getInput() {
+        var temp = document.createElement('div'),
+            val = email.value.trim();
+        console.log(temp);
+        (temp.textContent) ? (temp.textContent = val) : (temp.innerText = val);
+        return temp.innerHTML;
+    }
+    function setInput(ele) {
+        var temp = document.createElement('div');
+        temp.innerHTML = ele.textContent;
+        email.value = temp.textContent;
+    }
+    function setPrompt(val) {
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'],
+            len = len = postfixList.length,
+            html = '',
+            place = val.indexOf('@');
+        if (place !== -1) {
+            var all = val,
+                last;
+            val = all.slice(0, place);
+            last = all.slice(place + 1);
+            for (var i = 0; i < len; i++) {
+                var it = postfixList[i];
+                if (it.indexOf(last) === 0) {
+                    html += '<li>' + val + '@' + it + '</li>';
+                }
+            }
+        }
+        if (html === '') {
+            for (var i = 0; i < len; i++) {
+                html += '<li>' + val + '@' + postfixList[i] + '</li>';
+            }
+        }
+        sug.innerHTML = html;
+    }
+    function toggleActive(key) {
+        var li = document.querySelectorAll('#email-sug-wrapper > li'),
+            len = li.length;
+        if (len) {
+            li[nowSelectTipIndex].classList.remove('active');
+            if (key === 38) {
+                if (--nowSelectTipIndex < 0) {
+                    nowSelectTipIndex = len - 1;
+                }
+            } else if(key === 40) {
+                if (++nowSelectTipIndex === len) {
+                    nowSelectTipIndex  = 0;
+                }
+            }
+            li[nowSelectTipIndex].classList.add('active');
+        }
+    }
+    function resetActive() {
+        var firsLi = document.querySelector('#email-sug-wrapper > li'),
+            active = document.querySelector('#email-sug-wrapper > li.active');
+        if (active) {
+            active.classList.remove('active');
+        }
+        nowSelectTipIndex = 0;
+        firsLi.classList.add('active');
+    }
+    function showPrompt() {
+        sug.style.display = 'block';
+    }
+    function hidePrompt() {
+        sug.style.display = 'none';
+        sug.innerHTML = '';
+    }
+    email.focus();
+    email.addEventListener('input', function () {
+        var val = getInput();
+        if (val) {
+            setPrompt(val);
+            showPrompt();
+            resetActive();
+        } else {
+            hidePrompt();
+        }
+    });
+    email.addEventListener('keydown', function (e) {
+        var key = e.keyCode;
+        if (key === 38 || key === 40) {
+            toggleActive(key);
+        } else if (key === 13) {
+            var activ = document.querySelector('li.active');
+            if (activ) {
+                setInput(activ);
+                hidePrompt();
+            }
+        }
+    });
+    sug.addEventListener('click', function (e) {
+        var target = e.target;
+        if (target.tagName === 'LI') {
+            setInput(target);
+        }
+        email.focus();
+    });
+    document.addEventListener('click', function () {
+        hidePrompt();
+    });
+    </script>
+</body>
+</html>

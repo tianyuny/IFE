@@ -21,6 +21,7 @@
             list-style: none;
         }
         .email-sug li {
+            display: flex;
             margin: 0;
             padding: 5px;
             font-size: 12px;
@@ -31,6 +32,10 @@
         }
         .email-sug li:hover {
             background: #beddec;
+        }
+        .email-sug li span {
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
     </style>
@@ -79,13 +84,13 @@
             for (var i = 0; i < len; i++) {
                 var it = postfixList[i];
                 if (it.indexOf(last) === 0) {
-                    html += '<li>' + val + '@' + it + '</li>';
+                    html += '<li>' + '<span>' + val + '</span>@' + it + '</li>';
                 }
             }
         }
         if (html === '') {
             for (var i = 0; i < len; i++) {
-                html += '<li>' + val + '@' + postfixList[i] + '</li>';
+                html += '<li>' + '<span>' + val + '</span>@' + postfixList[i] + '</li>';
             }
         }
         sug.innerHTML = html;

@@ -45,17 +45,27 @@
     var email = document.getElementById('email-input');
     var sug = document.getElementById('email-sug-wrapper');
     var nowSelectTipIndex  = 0;
+
+    /*
+    *   获取输入框内容
+    * */
     function getInput() {
         var temp = document.createElement('div'),
             val = email.value.trim();
         (temp.textContent) ? (temp.textContent = val) : (temp.innerText = val);
         return temp.innerHTML;
     }
+    /*
+    *   填充输入框
+    * */
     function setInput(ele) {
         var temp = document.createElement('div');
         temp.innerHTML = ele.textContent;
         email.value = temp.textContent;
     }
+    /*
+    *   填充提示框
+    * */
     function setPrompt(val) {
         var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'],
             len = len = postfixList.length,
@@ -80,6 +90,9 @@
         }
         sug.innerHTML = html;
     }
+    /*
+    *   切换提示框选中
+    * */
     function toggleActive(key) {
         var li = document.querySelectorAll('#email-sug-wrapper > li'),
             len = li.length;
@@ -97,6 +110,9 @@
             li[nowSelectTipIndex].classList.add('active');
         }
     }
+    /*
+    *   重置提示框选中
+    * */
     function resetActive() {
         var firsLi = document.querySelector('#email-sug-wrapper > li'),
             active = document.querySelector('#email-sug-wrapper > li.active');
@@ -106,9 +122,15 @@
         nowSelectTipIndex = 0;
         firsLi.classList.add('active');
     }
+    /*
+    *   显示提示框
+    * */
     function showPrompt() {
         sug.style.display = 'block';
     }
+    /*
+    *   隐藏提示框
+    * */
     function hidePrompt() {
         sug.style.display = 'none';
         sug.innerHTML = '';

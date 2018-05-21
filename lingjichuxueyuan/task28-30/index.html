@@ -48,7 +48,6 @@
     function getInput() {
         var temp = document.createElement('div'),
             val = email.value.trim();
-        console.log(temp);
         (temp.textContent) ? (temp.textContent = val) : (temp.innerText = val);
         return temp.innerHTML;
     }
@@ -135,6 +134,8 @@
                 setInput(activ);
                 hidePrompt();
             }
+        } else if (key === 27) {
+            email.select();
         }
     });
     sug.addEventListener('click', function (e) {

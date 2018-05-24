@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我是精明的小卖家（一）</title>
+    <style>
+        body {
+            margin: 10px auto;
+            width: 800px;
+        }
+        table {
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        td,
+        th {
+           border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="region-radio-wrapper"></div>
+<div id="product-radio-wrapper"></div>
+<div id="table-wrapper">
+</div>
+
+<script src="js/ife31data.js"></script>
+<script>
+    !function() {
+        let regionBox = document.getElementById('region-radio-wrapper');
+        let productBox = document.getElementById('product-radio-wrapper');
+        let tableWrapper = document.getElementById('table-wrapper');
+
+        function createCheckBox(checkBox, checkArr) {
+            let html = '<input type="checkbox" checkbox-type="all">全部';
+            let len = checkArr.length;
+            for (let i = 0; i < len; i++) {
+                html += '<input type="checkbox" checkbox-type="single" value="' + checkArr[i].value + '">' + checkArr[i].text;
+            }
+            checkBox.innerHTML = html;
+            let count = checkBox.count =  [];
+            checkBox.addEventListener('click', function(e) {
+                let target = e.target;
+                if (target.tagName === 'INPUT') {
+                    if (target.getAttribute('checkbox-type') === 'all') {
+                        if (count.length < len) {
+                            let children = checkBox.children;
+                            for (let i = 1, len = children.length; i < len; i++) {
+                                children[i].checked = true;
+                                count[i - 1] = children[i].value;
+                            }
+                            target.checked = true;
+                        } else {
+                            target.checked = true;
+                        }
+                    } else {
+                        if (target.checked) {
+                            count.push(target.value);
+                            if (count.length === len) {
+                                checkBox.children[0].checked = true;
+                            }
+
+                        } else {
+                            if (count.length === 1) {
+                                target.checked = true;
+                            } else {
+                                if(count.length === len) {
+                                    checkBox.children[0].checked = false;
+                                }
+                                count.splice(count.indexOf(target.value), 1);
+                            }
+                        }
+                    }
+                    let data = getData();
+                    showNewTable(data);
+                }
+            });
+        }
+
+        function getData() {
+            let data = [];
+            function isCheck(it, count) {
+                for (let i = 0, len = count.length; i < len; i++) {
+                    if (count[i] === it) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            for (let i = 0, len = sourceData.length; i < len; i++) {
+                if (isCheck(sourceData[i].region, regionBox.count) && isCheck(sourceData[i].product, productBox.count)) {
+                    data.push(sourceData[i]);
+                }
+            }
+            return data;
+        }
+
+        function showNewTable(data) {
+            let restData = [];
+            let thArr = ['商品', '地区'];
+            let property = ['product', 'region'];
+            if (regionBox.count.length === 1 && productBox.count.length > 1) {
+                thArr.reverse();
+                property.reverse();
+                restData.push(data);
+            } else {
+                let obj = {};
+                let index = 0;
+                for (let i = 0, len = data.length; i < len; i++) {
+                    let product = data[i].product;
+                    if (obj[product] === undefined) {
+                        obj[product] = index++;
+                        restData.push([]);
+                    }
+                    restData[obj[product]].push(data[i]);
+                }
+            }
+            let html = '<table><thead><tr><th>' + thArr[0] + '</th>' +
+                '<th>' + thArr[1] +'</th>';
+            for (let i = 1; i < 13; i++) {
+                html += '<th>' + i + '月</th>';
+            }
+            html += '</tr></thead><tbody>';
+
+            for (let i = 0, len = restData.length; i < len; i++) {
+                for (let j = 0, len = restData[i].length; j < len; j++) {
+                    html += '<tr>' + (j === 0 ? '<td rowspan="' + len +'">' + restData[i][0][property[0]] + '</td>' : '') +
+                            '<td>' + restData[i][j][property[1]] +'</td>';
+                    for (let k = 0; k < 12; k++) {
+                        html += '<td>' + restData[i][j].sale[k] + '</td>';
+                    }
+                    html += '</tr>';
+                }
+            }
+            html += '</tbody></table>';
+            tableWrapper.innerHTML = html;
+        }
+
+        createCheckBox(regionBox, [
+            {
+                value: '华东',
+                text: '华东'
+            },
+            {
+                value: '华南',
+                text: '华南'
+            },
+            {
+                value: '华北',
+                text: '华北'
+            }
+        ]);
+        createCheckBox(productBox, [
+            {
+                value: '手机',
+                text: '手机'
+            },
+            {
+                value: '笔记本',
+                text: '笔记本'
+            },
+            {
+                value: '智能音箱',
+                text: '智能音箱'
+            }
+        ]);
+    }();
+</script>
+</body>
+</html>

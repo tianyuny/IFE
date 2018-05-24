@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我是精明的小卖家（一）</title>
+</head>
+<body>
+<select id="region-select">
+    <option value="华东">华东</option>
+    <option value="华南">华南</option>
+    <option value="华北">华北</option>
+</select>
+<select id="commodity-select">
+    <option value="手机">手机</option>
+    <option value="笔记本">笔记本</option>
+    <option value="智能音箱">智能音箱</option>
+</select>
+<div id="table-wrapper">
+</div>
+
+<script src="js/ife31data.js"></script>
+<script>
+    !function() {
+        let regionSelect = document.getElementById('region-select');
+        let commoditySelect = document.getElementById('commodity-select');
+        let tableWrapper = document.getElementById('table-wrapper');
+        regionSelect.addEventListener('change', onChange);
+        commoditySelect.addEventListener('change', onChange);
+        start();
+
+        function start() {
+            onChange.call(regionSelect);
+        }
+
+        function onChange() {
+            let data = getDate();
+            showNewTable(data);
+        }
+
+        function getDate() {
+            let data = [];
+            let regionValue = regionSelect.value;
+            let commodityValue = commoditySelect.value;
+            for (let i = 0, len = sourceData.length; i < len; i++) {
+                if (regionValue === sourceData[i].region && commodityValue === sourceData[i].product) {
+                    data.push(sourceData[i]);
+                }
+            }
+            return data;
+        }
+
+        function showNewTable(data) {
+            let len = data.length;
+            if (len > 0) {
+                let html = '<table><thead><tr>' +
+                    '<td>商品</td><td>地区</td>';
+                for (let i = 1; i < 13; i++) {
+                    html += '<th>' + i + '月</th>';
+                }
+                html += '</tr></thead><tbody>';
+
+                for (let i = 0; i < len; i++) {
+                    html += '<tr><td>' + data[i].product + '</td>' +
+                        '<td>' + data[i].region + '</td>';
+                    for (let j = 0; j < 12; j++) {
+                        html += '<td>' + data[i].sale[j] + '</td>';
+                    }
+                    html += '</tr>'
+                }
+                html += '</tbody></table>';
+
+                tableWrapper.innerHTML = html;
+            }
+        }
+    }();
+</script>
+</body>
+</html>

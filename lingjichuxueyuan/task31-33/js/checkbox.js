@@ -40,3 +40,5 @@ function createCheckBox(checkBox, checkArr, checkedHandler) {
         }
     });
 }
+
+export { createCheckBox };

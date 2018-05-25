@@ -1,3 +1,8 @@
+import { sourceData } from './ife31data.js';
+import { getData } from './data';
+import { showNewTable } from './table';
+import { createCheckBox } from './checkbox';
+
 !function() {
     let regionBox = document.getElementById('region-radio-wrapper');
     let productBox = document.getElementById('product-radio-wrapper');

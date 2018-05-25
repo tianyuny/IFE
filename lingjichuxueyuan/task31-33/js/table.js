@@ -43,3 +43,5 @@ function showNewTable(data, wrapper, regionBox, productBox) {
     html += '</tbody></table>';
     wrapper.innerHTML = html;
 }
+
+export { showNewTable };

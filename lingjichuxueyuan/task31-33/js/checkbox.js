@@ -1,4 +1,4 @@
-function createCheckBox(checkBox, checkArr) {
+function createCheckBox(checkBox, checkArr, checkedHandler) {
     let html = '<input type="checkbox" checkbox-type="all">全部';
     let len = checkArr.length;
     for (let i = 0; i < len; i++) {
@@ -36,8 +36,7 @@ function createCheckBox(checkBox, checkArr) {
                     }
                 }
             }
-            let data = getData();
-            showNewTable(data);
+            checkedHandler && checkedHandler();
         }
     });
 }

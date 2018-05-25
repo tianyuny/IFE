@@ -1,4 +1,4 @@
-function getData(data) {
+function getData(data, regionBox, productBox) {
     let result = [];
     function isCheck(it, count) {
         for (let i = 0, len = count.length; i < len; i++) {
